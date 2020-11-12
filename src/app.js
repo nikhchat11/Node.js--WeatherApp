@@ -8,6 +8,8 @@ const publicPath = path.join(__dirname,'../public')
 const viewPath = path.join(__dirname,'../templates/views')
 const partialsPath = path.join(__dirname,'../templates/partials')
 
+const port = process.env.PORT || 3000
+
 app.set('view engine','hbs')
 
 app.set('views',viewPath)
@@ -52,11 +54,13 @@ app.get('/weather',(req , res) => {
         return res.send('Please Provide an address')
     }
     weatherApi(req.query.address,(responseData) => {
+        
             res.send({
                 title:'Weather Page',
                 address:req.query.address,
                 data:responseData
             })
+
       
     } ) 
 })
@@ -70,6 +74,6 @@ app.get('*',(req , res) => {
     })
 })
 
-app.listen(3000,(port) => {
-    console.log("Server is started at port 3000");
+app.listen(port,() => {
+    console.log("Server is started at port "+port);
 })

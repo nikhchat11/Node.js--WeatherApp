@@ -1,5 +1,3 @@
-console.log("hello from js");
-
 const weatherForm = document.querySelector('form')
 const input = document.querySelector('input')
 const searchButton = document.querySelector('button')
@@ -21,9 +19,8 @@ weatherForm.addEventListener('submit', (e) => {
     messageOne.textContent = 'Loading....';
     messageTwo.textContent = '';
 
-    fetch('http://localhost:3000/weather?address='+input.value).then((response) => {
-        response.json().then(({data,address}) => {
-            console.log("Data", data);
+    fetch('/weather?address='+input.value).then((response) => {
+            response.json().then(({data , address}) => {
             messageOne.textContent = 'Location : '+address;
             messageTwo.textContent=data.weather_descriptions[0]+'. it is '+data.temperature+' degrees, but feels like '+data.feelslike+' degrees'
             image.src = data.weather_icons[0];
