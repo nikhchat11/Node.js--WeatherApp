@@ -7,6 +7,7 @@ const app = express()
 const publicPath = path.join(__dirname,'../public')
 const viewPath = path.join(__dirname,'../templates/views')
 const partialsPath = path.join(__dirname,'../templates/partials')
+const port = process.env || 3000
 
 app.set('view engine','hbs')
 
@@ -16,6 +17,7 @@ hbs.registerPartials(partialsPath)
 
 //getting the api functions
 const {weatherApi} = require('./utils/forecast')
+
 
 
 app.get('',(req , res) => {
@@ -70,6 +72,6 @@ app.get('*',(req , res) => {
     })
 })
 
-app.listen(3000,(port) => {
-    console.log("Server is started at port 3000");
+app.listen(port,(port) => {
+    console.log("Server is started at port "+ port);
 })

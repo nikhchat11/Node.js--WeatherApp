@@ -1,5 +1,3 @@
-console.log("hello from js");
-
 const weatherForm = document.querySelector('form')
 const input = document.querySelector('input')
 const searchButton = document.querySelector('button')
