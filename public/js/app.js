@@ -19,7 +19,7 @@ weatherForm.addEventListener('submit', (e) => {
     messageOne.textContent = 'Loading....';
     messageTwo.textContent = '';
 
-    fetch('http://localhost:3000/weather?address='+input.value).then((response) => {
+    fetch('/weather?address='+input.value).then((response) => {
             response.json().then(({data , address}) => {
             messageOne.textContent = 'Location : '+address;
             messageTwo.textContent=data.weather_descriptions[0]+'. it is '+data.temperature+' degrees, but feels like '+data.feelslike+' degrees'
